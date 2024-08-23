@@ -1,7 +1,3 @@
 --creates a function SafeDiv
-DELIMITER //
-CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
-BEGIN
-    RETURN IF(b = 0, 0, a / b);
-END //
-DELIMITER ;
+CREATE INDEX idx_name_first_score ON names (SUBSTRING(name, 1, 1), score);
+
