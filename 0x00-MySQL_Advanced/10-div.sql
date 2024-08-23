@@ -1,8 +1,22 @@
---creates a function SafeDiv
--- Safe divide
+--script that creates a function SafeDiv
 DELIMITER //
-CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
+
+CREATE FUNCTION SafeDiv(a INT, b INT)
+RETURNS INT
+DETERMINISTIC
 BEGIN
-    RETURN IF(b = 0, 0, a / b);
-END //
+    DECLARE result INT;
+    
+    IF b = 0 THEN
+        SET result = 0;
+    ELSE
+        SET result = a / b;
+    END IF;
+    
+    RETURN result;
+END;
+
+//
+
 DELIMITER ;
+
