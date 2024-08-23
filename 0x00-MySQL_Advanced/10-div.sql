@@ -1,3 +1,8 @@
 --creates a function SafeDiv
-CREATE INDEX idx_name_first_score ON names (SUBSTRING(name, 1, 1), score);
-
+-- Safe divide
+DELIMITER //
+CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT
+BEGIN
+    RETURN IF(b = 0, 0, a / b);
+END //
+DELIMITER ;
