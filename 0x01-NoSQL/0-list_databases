@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mongo --quiet --eval "db.adminCommand('listDatabases').databases.forEach(function(d) { print(d.name); })"
+
